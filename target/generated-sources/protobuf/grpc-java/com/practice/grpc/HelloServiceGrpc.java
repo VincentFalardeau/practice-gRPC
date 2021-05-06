@@ -39,6 +39,42 @@ public final class HelloServiceGrpc {
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               com.practice.grpc.HelloResponse.getDefaultInstance()))
           .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.practice.grpc.Message,
+      com.practice.grpc.Friend> METHOD_GET_FRIEND_LIST =
+      io.grpc.MethodDescriptor.<com.practice.grpc.Message, com.practice.grpc.Friend>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "com.practice.grpc.HelloService", "getFriendList"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.practice.grpc.Message.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.practice.grpc.Friend.getDefaultInstance()))
+          .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.practice.grpc.Item,
+      com.practice.grpc.Message> METHOD_RESTAURANT_ORDER =
+      io.grpc.MethodDescriptor.<com.practice.grpc.Item, com.practice.grpc.Message>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "com.practice.grpc.HelloService", "restaurantOrder"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.practice.grpc.Item.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.practice.grpc.Message.getDefaultInstance()))
+          .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.practice.grpc.Message,
+      com.practice.grpc.Message> METHOD_PARROT =
+      io.grpc.MethodDescriptor.<com.practice.grpc.Message, com.practice.grpc.Message>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "com.practice.grpc.HelloService", "parrot"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.practice.grpc.Message.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.practice.grpc.Message.getDefaultInstance()))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -74,6 +110,27 @@ public final class HelloServiceGrpc {
       asyncUnimplementedUnaryCall(METHOD_HELLO, responseObserver);
     }
 
+    /**
+     */
+    public void getFriendList(com.practice.grpc.Message request,
+        io.grpc.stub.StreamObserver<com.practice.grpc.Friend> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_GET_FRIEND_LIST, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.practice.grpc.Item> restaurantOrder(
+        io.grpc.stub.StreamObserver<com.practice.grpc.Message> responseObserver) {
+      return asyncUnimplementedStreamingCall(METHOD_RESTAURANT_ORDER, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.practice.grpc.Message> parrot(
+        io.grpc.stub.StreamObserver<com.practice.grpc.Message> responseObserver) {
+      return asyncUnimplementedStreamingCall(METHOD_PARROT, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -83,6 +140,27 @@ public final class HelloServiceGrpc {
                 com.practice.grpc.HelloRequest,
                 com.practice.grpc.HelloResponse>(
                   this, METHODID_HELLO)))
+          .addMethod(
+            METHOD_GET_FRIEND_LIST,
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                com.practice.grpc.Message,
+                com.practice.grpc.Friend>(
+                  this, METHODID_GET_FRIEND_LIST)))
+          .addMethod(
+            METHOD_RESTAURANT_ORDER,
+            asyncClientStreamingCall(
+              new MethodHandlers<
+                com.practice.grpc.Item,
+                com.practice.grpc.Message>(
+                  this, METHODID_RESTAURANT_ORDER)))
+          .addMethod(
+            METHOD_PARROT,
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                com.practice.grpc.Message,
+                com.practice.grpc.Message>(
+                  this, METHODID_PARROT)))
           .build();
     }
   }
@@ -112,6 +190,30 @@ public final class HelloServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_HELLO, getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getFriendList(com.practice.grpc.Message request,
+        io.grpc.stub.StreamObserver<com.practice.grpc.Friend> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(METHOD_GET_FRIEND_LIST, getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.practice.grpc.Item> restaurantOrder(
+        io.grpc.stub.StreamObserver<com.practice.grpc.Message> responseObserver) {
+      return asyncClientStreamingCall(
+          getChannel().newCall(METHOD_RESTAURANT_ORDER, getCallOptions()), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.practice.grpc.Message> parrot(
+        io.grpc.stub.StreamObserver<com.practice.grpc.Message> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(METHOD_PARROT, getCallOptions()), responseObserver);
+    }
   }
 
   /**
@@ -137,6 +239,14 @@ public final class HelloServiceGrpc {
     public com.practice.grpc.HelloResponse hello(com.practice.grpc.HelloRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_HELLO, getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.practice.grpc.Friend> getFriendList(
+        com.practice.grpc.Message request) {
+      return blockingServerStreamingCall(
+          getChannel(), METHOD_GET_FRIEND_LIST, getCallOptions(), request);
     }
   }
 
@@ -168,6 +278,9 @@ public final class HelloServiceGrpc {
   }
 
   private static final int METHODID_HELLO = 0;
+  private static final int METHODID_GET_FRIEND_LIST = 1;
+  private static final int METHODID_RESTAURANT_ORDER = 2;
+  private static final int METHODID_PARROT = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -190,6 +303,10 @@ public final class HelloServiceGrpc {
           serviceImpl.hello((com.practice.grpc.HelloRequest) request,
               (io.grpc.stub.StreamObserver<com.practice.grpc.HelloResponse>) responseObserver);
           break;
+        case METHODID_GET_FRIEND_LIST:
+          serviceImpl.getFriendList((com.practice.grpc.Message) request,
+              (io.grpc.stub.StreamObserver<com.practice.grpc.Friend>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -200,6 +317,12 @@ public final class HelloServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_RESTAURANT_ORDER:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.restaurantOrder(
+              (io.grpc.stub.StreamObserver<com.practice.grpc.Message>) responseObserver);
+        case METHODID_PARROT:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.parrot(
+              (io.grpc.stub.StreamObserver<com.practice.grpc.Message>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -224,6 +347,9 @@ public final class HelloServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new HelloServiceDescriptorSupplier())
               .addMethod(METHOD_HELLO)
+              .addMethod(METHOD_GET_FRIEND_LIST)
+              .addMethod(METHOD_RESTAURANT_ORDER)
+              .addMethod(METHOD_PARROT)
               .build();
         }
       }

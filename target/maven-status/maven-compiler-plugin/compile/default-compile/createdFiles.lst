@@ -1,1 +1,5 @@
+com/practice/grpc/Item$Builder.class
+com/practice/grpc/Item.class
+com/practice/grpc/ItemOrBuilder.class
+com/practice/grpc/Item$1.class
 com/practice/grpc/HelloServiceGrpc$1.class

@@ -24,6 +24,21 @@ public final class HelloServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_practice_grpc_HelloResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_practice_grpc_Message_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_practice_grpc_Message_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_practice_grpc_Friend_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_practice_grpc_Friend_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_practice_grpc_Item_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_practice_grpc_Item_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -36,9 +51,18 @@ public final class HelloServiceOuterClass {
       "\n\022HelloService.proto\022\021com.practice.grpc\"" +
       "3\n\014HelloRequest\022\021\n\tfirstName\030\001 \001(\t\022\020\n\010la" +
       "stName\030\002 \001(\t\"!\n\rHelloResponse\022\020\n\010greetin" +
-      "g\030\001 \001(\t2Z\n\014HelloService\022J\n\005hello\022\037.com.p" +
-      "ractice.grpc.HelloRequest\032 .com.practice" +
-      ".grpc.HelloResponseB\002P\001b\006proto3"
+      "g\030\001 \001(\t\"\032\n\007Message\022\017\n\007message\030\001 \001(\t\"-\n\006F" +
+      "riend\022\021\n\tfirstName\030\001 \001(\t\022\020\n\010lastName\030\002 \001" +
+      "(\t\"$\n\004Item\022\014\n\004name\030\001 \001(\t\022\016\n\006amount\030\002 \001(\005" +
+      "2\264\002\n\014HelloService\022J\n\005hello\022\037.com.practic" +
+      "e.grpc.HelloRequest\032 .com.practice.grpc." +
+      "HelloResponse\022H\n\rgetFriendList\022\032.com.pra" +
+      "ctice.grpc.Message\032\031.com.practice.grpc.F",
+      "riend0\001\022H\n\017restaurantOrder\022\027.com.practic" +
+      "e.grpc.Item\032\032.com.practice.grpc.Message(" +
+      "\001\022D\n\006parrot\022\032.com.practice.grpc.Message\032" +
+      "\032.com.practice.grpc.Message(\0010\001B\002P\001b\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -64,6 +88,24 @@ public final class HelloServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_practice_grpc_HelloResponse_descriptor,
         new java.lang.String[] { "Greeting", });
+    internal_static_com_practice_grpc_Message_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_com_practice_grpc_Message_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_practice_grpc_Message_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_com_practice_grpc_Friend_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_com_practice_grpc_Friend_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_practice_grpc_Friend_descriptor,
+        new java.lang.String[] { "FirstName", "LastName", });
+    internal_static_com_practice_grpc_Item_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_com_practice_grpc_Item_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_practice_grpc_Item_descriptor,
+        new java.lang.String[] { "Name", "Amount", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

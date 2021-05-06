@@ -11,6 +11,23 @@ message HelloResponse {
     string greeting = 1;
 }
 
+message Message{
+	string message = 1;
+}
+
+message Friend{
+	string firstName = 1;
+	string lastName = 2;
+}
+
+message Item{
+	string name = 1;
+	int32 amount = 2;
+}
+
 service HelloService {
     rpc hello(HelloRequest) returns (HelloResponse);
+    rpc getFriendList(Message) returns (stream Friend);
+    rpc restaurantOrder(stream Item) returns (Message);
+    rpc parrot(stream Message) returns (stream Message);
 }
